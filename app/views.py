@@ -3,4 +3,4 @@ from . import app
 
 @app.route('/')
 def base():
-    return render_template('index.html')
+    return render_template('static_oldsite.html')
