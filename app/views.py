@@ -31,3 +31,7 @@ def base():
 @app.route('/test')
 def test():
     return render_template('index.html')
+
+@app.route('/process')
+def process():
+    return render_template('static_oldsite_process.html')
