@@ -279,14 +279,30 @@ meilleures junior entreprises de France.
                     <div class="input-bg textarea">
 											{{form.description()}}
                     </div>
+
+										{% with messages = get_flashed_messages() %}
+      								{% if messages %}
+								        {% for message in messages %}
+								          {{ message }}
+								        {% endfor %}
+								      {% endif %}
+								    {% endwith %}
                     <div class="input-bg file btn">
                         <div class="label">
-                            <input type="file" name="file" id="attachement" multiple="" class="inputfile" data-multiple-caption="{count} fichiers sélectionnés">
-                            <label for="attachement" class="file">Ajoutez un fichier</label>
+													<form method="post" enctype="multipart/form-data">
+														{{form.file.label}}
+	 {{form.file()}}
+	 <input type="file" name ="file">
+</form>
+
+
+
+
+
                         </div>
                     </div>
                     <div class="input-bg submit btn">
-                        <input type="submit" value="Envoyer !">
+											{{form.submit()}}
                     </div>
                 </div>
             </form>
