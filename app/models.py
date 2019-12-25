@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import DataRequired,Email
@@ -14,5 +14,7 @@ class DevisForm(FlaskForm):
     email = EmailField('Adresse mail',[validators.DataRequired(), validators.Email()],render_kw={"placeholder": "Email"})
     tel = StringField(render_kw={"placeholder": "Téléphone"})
     description = StringField('Parlez-nous de votre projet',widget=TextArea(),render_kw={"placeholder": "Parlez nous de votre projet"})
-    file = FileField(validators=[FileRequired()],render_kw={"placeholder": "Ajouter un fichier"},label="Ajouter")
+    file = FileField(render_kw={"placeholder": "Ajouter un fichier"},label="Ajouter")
+    recaptcha = RecaptchaField()
     submit = SubmitField('Envoyer !',render_kw={"placeholder": "Envoyer !"})
+#test en cours sans fichier validators=[FileRequired()]

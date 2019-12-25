@@ -13,7 +13,6 @@ def base():
     form = DevisForm()
     if request.method == 'POST':
 
-
             if form.file.data:
                 file = request.files['file']
                 if file and allowed_file(file.filename):
@@ -29,22 +28,20 @@ def base():
     return render_template('static_oldsite.html',form=form, allowed=app.config['ALLOWED_EXTENSIONS'])
 
 @app.route('/process', methods = ['GET', 'POST'])
-def base():
+def process():
     form = DevisForm()
     if request.method == 'POST':
+        if form.file.data:
+            file = request.files['file']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)                    
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                flash('file uploaded successfully')
+                return redirect(url_for('test'))
 
-
-            if form.file.data:
-                file = request.files['file']
-                if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                    flash('file uploaded successfully')
-                    return redirect(url_for('test'))
-
-                else:
-                    if file and not allowed_file(file.filename):
-                        flash("Un fichier de type autorisé svp")
+            else:
+                if file and not allowed_file(file.filename):
+                    flash("Un fichier de type autorisé svp")
 
     return render_template('static_oldsite_process.html',form=form, allowed=app.config['ALLOWED_EXTENSIONS'])
 

@@ -1,0 +1,6 @@
+Flask==1.1.1
+Flask-Admin==1.5.4
+Flask-Bootstrap==3.3.7.1
+Flask-WTF==0.14.2
+Werkzeug==0.16.0
+
