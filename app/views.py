@@ -24,6 +24,7 @@ def base():
                 else:
                     if file and not allowed_file(file.filename):
                         flash("Un fichier de type autorisé svp")
+                        
 
     return render_template('static_oldsite.html',form=form, allowed=app.config['ALLOWED_EXTENSIONS'])
 
