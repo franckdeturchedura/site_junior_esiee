@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for,render_template_string,flash, session
 from . import app
 from .models import DevisForm, FormProcess, PhoneForm
-from werkzeug import secure_filename
+from werkzeug import secure_filename, MultiDict
 import os
 
 def allowed_file(filename):
@@ -31,12 +31,26 @@ def base():
 @app.route('/process', methods = ['GET', 'POST'])
 def formprocess():
     form = FormProcess()
-    if form.validate_on_submit():
-        session['phone']=form.phone.data
-        #flash('le nom{}, le prénom {}, le text{}'.format(form.nom.data, form.prenom.data,form.description.data))
-        return redirect('/test')
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            session['phone']=form.phone.data
+            return redirect('/test')
+        else:
+            session['formdata'] = request.form
+            return redirect('/process#contact')
+            #return render_template('static_oldsite_process.html',_anchor="contact",form=form)
+            #return redirect(url_for("formprocess",_anchor="contact", form=form))
+            #return redirect(url_for("formprocess", _anchor="contact"))
         
-    return render_template('static_oldsite_process.html',title='test',form=form)
+    elif request.method == 'GET':
+        formdata = session.get('formdata', None)
+        if formdata:
+            form = FormProcess(MultiDict(formdata))
+            form.validate()
+            session.pop('formdata')
+        return render_template('static_oldsite_process.html',form=form)
+
 
 #@app.route('/test')
 #def test():
