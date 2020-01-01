@@ -5,4 +5,8 @@ Repo du site 2019/2020 de Junior ESIEE
 
 Pour installer toutes les dépendances nécessaires de python.
 
-`pip3 install -r requirements.txt`
+`pip3 install -r requirements.txt`.
+
+ou `python3 -m pip install -r requirements.txt`.
+
+Plus opti : `pipenv install`
