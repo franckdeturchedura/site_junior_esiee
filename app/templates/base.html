@@ -1,24 +1,250 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html class="no-js" lang="fr-FR">
 
-    {% block styles %}
-    {{ bootstrap.load_css() }}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
-    {% endblock %}
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <title>{% block title %}{% endblock %}</title>
-  </head>
-  <body>
-    <div class="container">
-      {% block content %}{% endblock %}
-    </div>
+	{% block google %}
 
-    {% block scripts %}
-    {{ bootstrap.load_js() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
-    {% endblock %}
-  </body>
+	{% endblock %}
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
+
+
+	<link rel="apple-touch-icon" sizes="57x57" href="https://www.junioresiee.com/images/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://www.junioresiee.com/images/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://www.junioresiee.com/images/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://www.junioresiee.com/images/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114"
+		href="https://www.junioresiee.com/images/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120"
+		href="https://www.junioresiee.com/images/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144"
+		href="https://www.junioresiee.com/images/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152"
+		href="https://www.junioresiee.com/images/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180"
+		href="https://www.junioresiee.com/images/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"
+		href="https://www.junioresiee.com/images/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://www.junioresiee.com/images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://www.junioresiee.com/images/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://www.junioresiee.com/images/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://www.junioresiee.com/images/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="icon" type="image/x-icon" href="https://www.junioresiee.com/images/favicon/favicon.ico">
+	<link rel="stylesheet" href="static/css/app.css">
+	<link href="static/css/css.css" rel="stylesheet" type="text/css">
+	<link href='//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
+
+	{% block styles %}
+	{% endblock %}
+
+	{% block titre %}
+	{% endblock %}
+
+</head>
+{% block body %}
+
+{% endblock%}
+<div class="scrollpoint" id="contact"></div>
+<section class="home-section contact inverse">
+	<h1>Discutons de votre projet !</h1>
+
+
+	<form action="" method="post" novalidate>
+
+		<div class="flexwrap">
+			{{ form.hidden_tag() }}
+
+			<div class="input-bg">
+				{{ form.nom}}
+			</div>
+			<div class="col-sm-4">
+			{% for error in form.nom.errors %}
+				<span style="color: red;">{{ error }}</span>
+			{% endfor %}
+			</div>
+
+			<div class="input-bg">
+				{{ form.prenom}}
+			</div>
+			<div class="col-sm-4">
+				{% for error in form.prenom.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+			</div>
+
+			<div class="input-bg">
+				{{ form.email}}
+			</div>
+			<div class="col-sm-4">
+				{% for error in form.email.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+			</div>
+
+			<div class="input-bg phone">
+				{{form.phone}}
+			</div>
+			<div class="col-sm-4">
+				{% with errors = get_flashed_messages(category_filter=["errorphone"]) %}
+					{% if errors %}
+						{%- for message in errors %}
+							<span style="color: red;">{{ message }}</span>
+						{% endfor -%}
+					{% endif %}
+				{% endwith %}
+			</div>
+
+
+			<div class="input-bg textarea">
+				{{ form.description }}
+			</div>
+			<div class="col-sm-4">
+				{% for error in form.description.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+			</div>
+
+			<div class="input-bg submit btn">
+				<a href="{{ url_for('.formprocess', _anchor='contact') }}"></a>
+				{{form.submit() }}
+			</div>
+		</div>
+	</form>
+	<div class="or">
+		<div class="separator"></div>
+		<div class="text">OU</div>
+		<div class="separator"></div>
+	</div>
+	<h2 class="address">contact@junioresiee.com</h2>
+</section>
+</body>
+<footer class="main home-section">
+	<div class="row">
+		<div class="small-12 large-3 columns address">
+			<h3>Adresse &amp; contact</h3>
+			<p>Junior ESIEE, 2 Boulevard Blaise Pascal BP 99 - 93162 Noisy le Grand CEDEX</p>
+			<p>contact@junioresiee.com<br>01 45 92 66 70</p>
+		</div>
+		<div class="small-12 large-3 columns partners">
+			<h3>Nos partenaires</h3>
+			<ul>
+				<li><a href="http://esiee.fr/">ESIEE Paris</a></li>
+				<li><a href="http://www.alten.fr/">Alten</a></li>
+				<li><a href="https://www.societegenerale.fr/">Société générale</a></li>
+				<li><a href="http://www.junior-entreprises.com/">CNJE</a></li>
+				<li><a href="https://juniors-idf.fr/">JIDF</a></li>
+				<li><a href="http://www.jubs.fr/">Junior BioSciences</a></li>
+				<li><a href="http://pep.enpc.org/">Ponts Études Projets</a></li>
+			</ul>
+		</div>
+		<div class="small-12 large-3 columns social">
+			<h3>Réseaux sociaux</h3>
+			<a href="https://www.facebook.com/JuniorEsieeParis"><i class="ion-social-facebook-outline"></i></a>
+			<a href="https://twitter.com/junioresiee"><i class="ion-social-twitter-outline"></i></a>
+			<a href="https://www.linkedin.com/company/junior-esiee"><i class="ion-social-linkedin-outline"></i></a>
+			<p class="link-legal"><a href="#" class="toggle-legal">Mentions légales</a></p>
+		</div>
+	</div>
+</footer>
+<section class="popup legal hide">
+	<div class="close toggle-legal"><i class="ion-ios-close-empty"></i></div>
+	<h1>Mentions légales</h1>
+	<p>
+		Junior ESIEE Paris est une association à but non lucratif régie par la loi française du 1er juillet 1901 et du
+		décrêt du 16 août 1901. Son siège social se situe à :
+
+		ESIEE Paris
+		2 BD Blaise Pascal
+		BP99
+		93162 Noisy le Grand CEDEX
+
+		Junior ESIEE Paris est déclarée à la sous-préfecture du Raincy.
+		Numéro de SIRET : 348 301 243 000 13
+		Code APE : 6202B
+		Junior ESIEE Paris est affiliée à la Confédération Nationale des Junior-Entreprises, et détient à ce titre le
+		label
+		"Junior-Entreprise".
+
+		Les données, textes, contenus, images, de ce site web, sont protégés au titre de la propriété Intellectuelle et
+		des
+		droits d'Auteurs. La récupération est autorisée, sous réserve d'une utilisation strictement personnelle,
+		excluant
+		l'usage à des fins publicitaires, commerciales, ou d'informations, et quelles soient conformes aux dispositions
+		de
+		l'article L.122-5 du Code de la Propriété Intellectuelle. A l'exception des dispositions précédentes, toute
+		utilisation avec ou sans modification, toute représentation, toute reproduction, par quelque procédé que ce
+		soit, et
+		sur quelque support que ce soit, d'un fichier (ou donnée) complet ou partiel(le) du site, est strictement
+		interdite
+		sans avoir obtenu l'autorisation préalable de Junior ESIEE Paris.
+		Art. L.111 et Art. L.112 : Code de la propriété Intellectuelle, Livre 1er, Titre 1er : Objet du Droit d'Auteur :
+		Chapitre 1 : Nature du droit d'auteur - Chapitre 2 : Oeuvres protégées. Nous souhaitons le respect pour nos
+		informations et nos fichiers, et donc le non-vol. Art. L.121 : Droits moraux - Code de la propriété
+		Intellectuelle,
+		Titre 2 : Droits des Auteurs, Chapitre 2.
+
+		En application de la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés,
+		chaque
+		internaute dispose des droits d’opposition (article 38 de la loi), d’accès (articles 39, 41 et 42 de la loi) et
+		de
+		rectification (article 40 de la loi) des données le concernant. Ainsi, il peut exiger que soient rectifiées,
+		complétées, clarifiées, mises à jour ou effacées les informations le concernant qui sont inexactes, incomplètes,
+		équivoques, périmées, ou dont la collecte ou l’utilisation, la communication ou la conservation est interdite.
+		Pour exercer ces droits, vous pouvez nous contacter :
+
+		Par email (courriel) en utilisant le formulaire de contact du site web.
+		Par courrier, à l'adresse : Junior ESIEE, 2 bd Blaise Pascal, BP99, 93162 Noisy le Grand CEDEX
+
+		Junior-Entreprise et JE sont des marques déposées par la Confédération Nationale des Junior-Entreprises. ESIEE
+		Paris, ESIEE Management et ESIEE Engineering sont des marques déposées par la Chambre de Commerce et d'Industrie
+		de
+		Paris. Les appellations, marques et logos présents sur ce site web sont la propriété de leurs ayants droit
+		respectifs.
+
+		Made with <i class="ion-heart"></i> by Maxence Aïci &amp; Vincent Salahkar
+	</p>
+</section>
+
+<script src="static/js/jquery.cookie.js"></script>
+<script src="static/js/modernizr.js"></script>
+<script src="static/js/fastclick.js"></script>
+<script src="static/js/jquery.js"></script>
+<script src="static/js/TweenMax.js"></script>
+<script src="static/js/ScrollMagic.js"></script>
+<script src="static/js/animation.js"></script>
+<script src="static/js/ScrollToPlugin.js"></script>
+<script src="static/js/debug.js"></script>
+<script src="static/js/foundation_002.js"></script>
+<script src="static/js/foundation.js"></script>
+<script src="static/js/foundation_003.js"></script>
+<script src="static/js/app.js"></script>
+<script src="static/js/intlTelInput.min.js"></script>
+<script>
+	var wtf_phone_field = document.getElementById('phone');
+	wtf_phone_field.style.position = 'absolute';
+	wtf_phone_field.style.top = '-9999px';
+	wtf_phone_field.style.left = '-9999px';
+	wtf_phone_field.parentElement.insertAdjacentHTML('beforeend', '<div><input type="tel" id="_phone"></div>');
+	var fancy_phone_field = document.getElementById('_phone');
+	var fancy_phone_iti = window.intlTelInput(fancy_phone_field, {
+		separateDialCode: true,
+		utilsScript: "static/js/utils.js",
+		preferredCountries: ["fr"],
+	});
+	fancy_phone_iti.setNumber(wtf_phone_field.value);
+	fancy_phone_field.addEventListener('blur', function () {
+		wtf_phone_field.value = fancy_phone_iti.getNumber();
+	});
+</script>
+
+
 </html>

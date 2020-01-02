@@ -1,7 +1,8 @@
 from flask import Flask,render_template,request,redirect,url_for,render_template_string,flash, session
 from . import app
-from .models import DevisForm, FormProcess, PhoneForm
+from .models import DevisForm, FormProcess
 from werkzeug import secure_filename, MultiDict
+import phonenumbers
 import os
 
 def allowed_file(filename):
@@ -33,16 +34,30 @@ def formprocess():
     form = FormProcess()
 
     if request.method == 'POST':
-        if form.validate_on_submit():
-            session['phone']=form.phone.data
+        resultat = request.form
+
+        phone       =   resultat.get("phone")
+        valide      =   True
+
+        #Validation numéro de téléphone
+        if len(phone) == 0:
+            flash("Votre numéro est obligatoire","errorphone")
+            valide = False
+        else:
+            try:
+                p = phonenumbers.parse(phone)
+                if not phonenumbers.is_valid_number(p):
+                    raise ValueError()
+            except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
+                flash("Voter numéro de téléphone n'est pas valide", "errorphone")
+                valide = False
+
+        if form.validate_on_submit() and valide == True:
             return redirect('/test')
         else:
             session['formdata'] = request.form
             return redirect('/process#contact')
-            #return render_template('static_oldsite_process.html',_anchor="contact",form=form)
-            #return redirect(url_for("formprocess",_anchor="contact", form=form))
-            #return redirect(url_for("formprocess", _anchor="contact"))
-        
+
     elif request.method == 'GET':
         formdata = session.get('formdata', None)
         if formdata:
@@ -52,21 +67,6 @@ def formprocess():
         return render_template('static_oldsite_process.html',form=form)
 
 
-#@app.route('/test')
-#def test():
-    #return render_template('index.html')
-
-
-
-@app.route('/test', methods=['GET', 'POST'])
-def index():
-    form = PhoneForm()
-    if form.validate_on_submit():
-        session['phone'] = form.phone.data
-        return redirect(url_for('show_phone'))
-    return render_template('index.html', form=form)
-
-
-@app.route('/showphone')
-def show_phone():
-    return render_template('show_phone.html', phone=session['phone'])
+@app.route('/test')
+def test():
+    return render_template('index.html')

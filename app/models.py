@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextField
 from flask_wtf.file import FileField, FileRequired
-from wtforms.validators import DataRequired,Email, ValidationError
+from wtforms.validators import DataRequired,Email, ValidationError, Length
 from wtforms import validators
 from wtforms.fields.html5 import EmailField
 from wtforms.widgets import TextArea
@@ -20,29 +20,37 @@ class DevisForm(FlaskForm):
 #test en cours sans fichier validators=[FileRequired()]
 
 class FormProcess(FlaskForm):
-    nom = StringField("Nom de famille", validators=[DataRequired()],render_kw={"placeholder": "Nom de famille"})
-    prenom = StringField("Prénom", validators=[DataRequired()],render_kw={"placeholder": "Prénom"})
-    description= TextField("Parlez-nous de votre projet", validators=[DataRequired()],widget=TextArea(),render_kw={"placeholder": "Parlez nous de votre projet"})
-    phone = StringField('Phone')
-    submit = SubmitField('Envoyer')
+    mini = 2
+    maxi = 32
+    nom         =   StringField("Nom de famille", 
+                                validators=[DataRequired(message="Votre nom est obligatoire."),
+                                            Length(min=mini, message="Votre nom est trop court."),
+                                            Length(max=maxi,message="Votre nom est trop long.")],
+                                render_kw={"placeholder": "Nom de famille"})
+    prenom      =   StringField("Prénom",
+                                validators=[DataRequired(message="Votre prénom est obligatoire."),
+                                            Length(min=mini, message="Votre prénom est trop court."),
+                                            Length(max=maxi,message="Votre prénom est trop long.")],
+                                render_kw={"placeholder": "Prénom"})
+    description =   TextField(  "Parlez-nous de votre projet.",
+                                validators=[DataRequired(message="Une description de votre projet est obligatoire."),
+                                            Length(min=mini, message="Votre description est trop courte.")],
+                                widget=TextArea(),
+                                render_kw={"placeholder": "Parlez nous de votre projet."})
+    phone       =   StringField('Phone')
+    email       =   StringField('Email', 
+                                [Email(message="Ce n'est pas une adresse mail valide."),
+                                DataRequired(message="Votre adresse email est obligatoire.")],
+                                render_kw={"placeholder": "Email"})
+    submit      =   SubmitField('Envoyer !',
+                                render_kw={"placeholder": "Envoyer !"})
 
-    def validate_phone(self, phone):
+
+"""    def validate_phone(self, phone):
         try:
             p = phonenumbers.parse(phone.data)
             if not phonenumbers.is_valid_number(p):
                 raise ValueError()
         except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
             raise ValidationError('Invalid phone number')
-
-
-class PhoneForm(FlaskForm):
-    phone = StringField('Phone', validators=[DataRequired()])
-    submit = SubmitField('Submit')
-
-    def validate_phone(self, phone):
-        try:
-            p = phonenumbers.parse(phone.data)
-            if not phonenumbers.is_valid_number(p):
-                raise ValueError()
-        except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
-            raise ValidationError('Invalid phone number')
+"""
