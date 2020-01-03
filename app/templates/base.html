@@ -65,12 +65,15 @@
 
 			<div class="input-bg">
 				{{ form.nom}}
+				{% if form.nom.errors %}
+					<ul class="errors">
+					  	{% for error in form.nom.errors %}
+							<li>{{ error }}</li>
+					  	{% endfor %}
+					</ul>
+				{% endif %}
 			</div>
-			<div class="col-sm-4">
-			{% for error in form.nom.errors %}
-				<span style="color: red;">{{ error }}</span>
-			{% endfor %}
-			</div>
+			
 
 			<div class="input-bg">
 				{{ form.prenom}}
@@ -114,7 +117,7 @@
 			</div>
 
 			<div class="input-bg submit btn">
-				<a href="{{ url_for('.formprocess', _anchor='contact') }}"></a>
+				<!--<a href="{{ url_for('.formprocess', _anchor='contact') }}"></a>-->
 				{{form.submit() }}
 			</div>
 		</div>

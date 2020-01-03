@@ -77,9 +77,17 @@
                 </div>
             </div>
         </nav>
-        
         <div class="pagebg maxH container" style="min-height: 951px;"></div>
         <section class="step maxH title" data-color="" style="min-height: 951px;">
+            <div class="col-sm-4">
+                {% with errors = get_flashed_messages(category_filter=["validation"]) %}
+                    {% if errors %}
+                        {%- for message in errors %}
+                            <span style="color: red;">{{ message }}</span>
+                        {% endfor -%}
+                    {% endif %}
+                {% endwith %}
+            </div>
             <h1>Comment fonctionne une étude ?</h1>
         </section>
         <section class="step">

@@ -4,6 +4,9 @@ from .models import DevisForm, FormProcess
 from werkzeug import secure_filename, MultiDict
 import phonenumbers
 import os
+from flask_mail import Message
+from app import mail
+
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -36,24 +39,39 @@ def formprocess():
     if request.method == 'POST':
         resultat = request.form
 
-        phone       =   resultat.get("phone")
-        valide      =   True
+        Fprenom      =  resultat.get("prenom")
+        Fnom         =  resultat.get("nom")
+        Femail       =  resultat.get("email")
+        Fdescription =  resultat.get("description")
+        Fphone       =  resultat.get("phone")
+        valide       =  True
 
         #Validation numéro de téléphone
-        if len(phone) == 0:
-            flash("Votre numéro est obligatoire","errorphone")
+        if len(Fphone) == 0:
+            flash("Votre numéro de téléphone est obligatoire.","errorphone")
             valide = False
         else:
             try:
-                p = phonenumbers.parse(phone)
+                p = phonenumbers.parse(Fphone)
                 if not phonenumbers.is_valid_number(p):
                     raise ValueError()
             except (phonenumbers.phonenumberutil.NumberParseException, ValueError):
-                flash("Voter numéro de téléphone n'est pas valide", "errorphone")
+                flash("Votre numéro de téléphone n'est pas valide.", "errorphone")
                 valide = False
-
+        #Si le formulaire est validé et il n'y a pas d'erreur
         if form.validate_on_submit() and valide == True:
-            return redirect('/test')
+            flash("Merci d'avoir rempli ce formulaire, nous vous répondrons rapidement.","validation")
+            msg = Message(Fprenom + ' ' + Fnom + ' a contacté Junior ESIEE', recipients=['remi.boidet@junioresiee.com'])
+            msg.body = Fprenom + '' + Fnom + ' a contacté Junior ESIEE pour ' + Fdescription + '\n peut être recontacté au ' + Fphone + Femail
+            msg.html = render_template('templatemail.html',
+                                        Prenom          =   Fprenom,
+                                        Nom             =   Fnom,
+                                        Description     =   Fdescription,
+                                        Phone           =   Fphone,
+                                        Email           =   Femail,
+            )
+            mail.send(msg)
+            return redirect('/process')
         else:
             session['formdata'] = request.form
             return redirect('/process#contact')
