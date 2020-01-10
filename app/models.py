@@ -42,5 +42,6 @@ class FormProcess(FlaskForm):
                                 [Email(message="Ce n'est pas une adresse mail valide."),
                                 DataRequired(message="Votre adresse email est obligatoire.")],
                                 render_kw={"placeholder": "Email"})
+    recaptchafield = RecaptchaField()
     submit      =   SubmitField('Envoyer !',
                                 render_kw={"placeholder": "Envoyer !"})

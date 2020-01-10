@@ -8,6 +8,7 @@ from flask_mail import Mail
 app = Flask(__name__, instance_relative_config=True)
 boot = Bootstrap(app)
 
+#Pour l'envoi de mail
 app.config['MAIL_SERVER'] = 'smtp.sendgrid.net'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True

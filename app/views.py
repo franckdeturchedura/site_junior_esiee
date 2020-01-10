@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,redirect,url_for,render_template_string,flash, session
+from flask import Flask,render_template,request,redirect,url_for,flash, session
 from . import app
 from .models import DevisForm, FormProcess
 from werkzeug import secure_filename, MultiDict
@@ -61,7 +61,7 @@ def formprocess():
         #Si le formulaire est validé et il n'y a pas d'erreur
         if form.validate_on_submit() and valide == True:
             flash("Merci d'avoir rempli ce formulaire, nous vous répondrons rapidement.","validation")
-            msg = Message(Fprenom + ' ' + Fnom + ' a contacté Junior ESIEE', recipients=['remi.boidet@junioresiee.com'])
+            msg = Message(Fprenom + ' ' + Fnom + ' a contacté Junior ESIEE', recipients=['bureau@junioresiee.com'])
             msg.body = Fprenom + '' + Fnom + ' a contacté Junior ESIEE pour ' + Fdescription + '\n peut être recontacté au ' + Fphone + Femail
             msg.html = render_template('templatemail.html',
                                         Prenom          =   Fprenom,
