@@ -3,4 +3,5 @@ Flask-Admin==1.5.4
 Flask-Bootstrap==3.3.7.1
 Flask-WTF==0.14.2
 Werkzeug==0.16.0
-
+phonenumbers==8.11.1
+Flask-Mail==0.9.1
