@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm, RecaptchaField
+from flask_wtf import FlaskForm, RecaptchaField, Form
 from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextField
 from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import DataRequired,Email, ValidationError, Length
@@ -19,7 +19,7 @@ class DevisForm(FlaskForm):
     submit = SubmitField('Envoyer !',render_kw={"placeholder": "Envoyer !"})
 #test en cours sans fichier validators=[FileRequired()]
 
-class FormProcess(FlaskForm):
+class FormProcess(Form):
     mini = 2
     maxi = 32
     nom         =   StringField("Nom de famille", 
@@ -43,5 +43,6 @@ class FormProcess(FlaskForm):
                                 DataRequired(message="Votre adresse email est obligatoire.")],
                                 render_kw={"placeholder": "Email"})
     recaptchafield = RecaptchaField()
+    file        =   FileField(render_kw={"placeholder": "Ajouter un fichier"},label="Ajouter un fichier")
     submit      =   SubmitField('Envoyer !',
                                 render_kw={"placeholder": "Envoyer !"})
