@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for,flash, session
 from . import app
-from .models import DevisForm, FormProcess
+from .models import FormProcess
 from werkzeug.utils import secure_filename, MultiDict
 import phonenumbers
 import os
@@ -13,7 +13,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
-def validation_formulaire(form):
+def validation_formulaire(form,lien):
 
     resultat = request.form
 
@@ -59,38 +59,34 @@ def validation_formulaire(form):
                                     Email           =   Femail,
                                     )
         mail.send(msg)
-        lien = '/process'
     else:
         session['formdata'] = request.form
-        lien = '/process#contact'
+        lien = lien + '#contact'
     return(lien)
 
 @app.route('/', methods = ['GET', 'POST'])
 def base():
-    form = DevisForm()
+    form = FormProcess(request.form)
+
     if request.method == 'POST':
+        lien = validation_formulaire(form,'/')
+        return redirect(lien)
 
-            if form.file.data:
-                file = request.files['file']
-                if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                    flash('file uploaded successfully')
-                    return redirect(url_for('test'))
+    elif request.method == 'GET':
+        formdata = session.get('formdata', None)
+        if formdata:
+            form = FormProcess(MultiDict(formdata))
+            form.validate()
+            session.pop('formdata')
+        return render_template('static_oldsite.html',form=form)
 
-                else:
-                    if file and not allowed_file(file.filename):
-                        flash("Un fichier de type autorisé svp")
-
-
-    return render_template('static_oldsite.html',form=form, allowed=app.config['ALLOWED_EXTENSIONS'])
 
 @app.route('/process', methods = ['GET', 'POST'])
 def formprocess():
     form = FormProcess(request.form)
 
     if request.method == 'POST':
-        lien = validation_formulaire(form)
+        lien = validation_formulaire(form,'/process')
         return redirect(lien)
 
     elif request.method == 'GET':
