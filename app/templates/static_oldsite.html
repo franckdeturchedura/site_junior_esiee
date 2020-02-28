@@ -23,25 +23,6 @@
 
 {% block body %}
     <body class="home">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="filters">
-            <filter id="filter-blur">
-                <feFlood flood-color="#555555" result="COLOR-gray"></feFlood>
-                <feComposite in="COLOR-gray" in2="SourceAlpha" operator="in" result="caca"></feComposite>
-                <feGaussianBlur in="caca" stdDeviation="0.5"></feGaussianBlur>
-            </filter>
-            <filter id="filter-gray">
-                <feFlood flood-color="#555555" result="COLOR-gray"></feFlood>
-                <feComposite in="COLOR-gray" in2="SourceAlpha" operator="in" result="caca"></feComposite>
-            </filter>
-            <filter id="filter-grayscale">
-                <feColorMatrix in="SourceGraphic" type="saturate" values="0"></feColorMatrix>
-            </filter>
-            <filter id="filter-bluescale">
-                <feFlood flood-color="#789bd1" result="color"></feFlood>
-                <feColorMatrix in="SourceGraphic" type="saturate" values="0" result="graypic"></feColorMatrix>
-                <feBlend in="graypic" in2="color" mode="multiply">
-            </feBlend></filter>
-        </svg>
         <!--[if lte IE 9]>
         <div class="oldbrowser">
             <div class="row">
