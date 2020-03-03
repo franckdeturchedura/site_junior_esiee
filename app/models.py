@@ -1,10 +1,9 @@
-from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextField
-from flask_wtf.file import FileField, FileRequired
 from wtforms.validators import DataRequired,Email
 from wtforms import validators
 from wtforms.fields.html5 import EmailField
 from wtforms.widgets import TextArea
+from flask_login import UserMixin
+
 
 
 
@@ -18,3 +17,21 @@ class DevisForm(FlaskForm):
     recaptcha = RecaptchaField()
     submit = SubmitField('Envoyer !',render_kw={"placeholder": "Envoyer !"})
 #test en cours sans fichier validators=[FileRequired()]
+
+
+class User(UserMixin):
+    def __init__(self, id, username=''):
+        self.username = username
+        self.id = id
+
+class LoginForm(FlaskForm):
+    login = StringField('Login', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember me', default=False)
+    submit = SubmitField('Go')
+
+class SignupForm(FlaskForm):
+    email = EmailField('Adresse mail',[validators.DataRequired(), validators.Email()],render_kw={"placeholder": "Email"})
+    login = StringField('Login', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Go')
