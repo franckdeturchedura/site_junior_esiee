@@ -1,3 +1,2 @@
-app/__pycache__/*
-__pycache__/*
-upload/*
+__pycache__/
+instance/

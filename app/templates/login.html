@@ -1,0 +1,65 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+    {{ super() }}
+        <title>{% block title %}
+        {% if title %}
+            {{ title }}
+        {% else %}
+            Page
+        {% endif %}
+    {% endblock title %}</title>
+    <style> .container {
+        margin-left: 30px;
+    }
+    </style>
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+    {% block container %} {% endblock %}
+
+
+
+
+<form method="POST" action="/login">
+{{ form.hidden_tag() }}
+<p>
+  <b>{{ form.login.label }} :</b><br>
+  {{ form.login(size=40, autofocus=True) }}<br>
+  {% for error in form.login.errors %}
+  <span style="color: red;">[{{ error }}]</span>
+  {% endfor %}<br>
+</p>
+
+<p>
+  <b>{{ form.password.label }} :</b><br>
+  {{ form.password(size=40) }}<br>
+  {% for error in form.password.errors %}
+  <span style="color: red;">[{{ error }}]</span>
+  {% endfor %}<br>
+</p>
+
+<p>{{ form.submit }}</p>
+
+<p>{{ form.remember_me }} <b>{{ form.remember_me.label }}</b></p>
+
+</form>
+
+</div>
+
+{% endblock %}
