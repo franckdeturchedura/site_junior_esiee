@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html class="no-js" lang="fr-FR">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta class="foundation-mq-small">
-        <meta class="foundation-mq-small-only">
-        <meta class="foundation-mq-medium">
-        <meta class="foundation-mq-medium-only">
-        <meta class="foundation-mq-large">
-        <meta class="foundation-mq-large-only">
-        <meta class="foundation-mq-xlarge">
-        <meta class="foundation-mq-xlarge-only">
-        <meta class="foundation-mq-xxlarge">
-        <meta class="foundation-data-attribute-namespace">
+{% extends 'base.html' %}
+
+        {% block google %}
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async="" src="static/static_oldsite_process_fichiers/js"></script>
+        <script async="" src="static/js"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -21,32 +10,12 @@
 
             gtag('config', 'UA-137872421-1');
         </script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% endblock %}
+        {% block titre %}
         <title>Junior ESIEE</title>
-        <link rel="apple-touch-icon" sizes="57x57" href="https://www.junioresiee.com/images/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="https://www.junioresiee.com/images/favicon/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="https://www.junioresiee.com/images/favicon/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="https://www.junioresiee.com/images/favicon/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="https://www.junioresiee.com/images/favicon/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="https://www.junioresiee.com/images/favicon/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="https://www.junioresiee.com/images/favicon/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="https://www.junioresiee.com/images/favicon/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="https://www.junioresiee.com/images/favicon/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="https://www.junioresiee.com/images/favicon/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://www.junioresiee.com/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="https://www.junioresiee.com/images/favicon/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://www.junioresiee.com/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="https://www.junioresiee.com/images/favicon/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="icon" type="image/x-icon" href="https://www.junioresiee.com/images/favicon/favicon.ico">
-        <link rel="stylesheet" href="static/css/app.css">
-        <link href="static/css/css.css" rel="stylesheet" type="text/css">
-        <link href='//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' rel='stylesheet' type='text/css'>
-        <style></style>
-    </head>
+        {% endblock %}
+    {% block body %}
     <body class="process">
         <!--[if lte IE 9]>
         <div class="oldbrowser">
@@ -93,7 +62,6 @@
         <section class="step maxH title" data-color="" style="min-height: 951px;">
             <h1>Comment fonctionne une étude ?</h1>
         </section>
-	
         <section class="step">
             <h1>Premier contact</h1>
             <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="318.4 382.5 1160.6 547.5" enable-background="new 318.4 382.5 1160.6 547.5" xml:space="preserve"><path id="client" fill="#3A3A3A" d="M707.9 849.9c-14-5-34-6.7-46.7-9.5 -7.4-1.6-18.1-5.7-21.6-10 -3.6-4.4-1.4-44.3-1.4-44.3s6.6-10.4 10.2-19.5c3.6-9.1 7.4-34 7.4-34s7.4 0 10-12.9c2.8-14.1 7.1-19.9 6.6-30.4 -0.5-9.7-5.6-10.3-6.2-10.3l0 0c0 0 5.3-14.7 6-45.9 0.8-36.9-27.4-73.2-80.4-73.2 -53 0-81.1 36.2-80.4 73.1 0.7 31 6 45.9 6 45.9l0 0c-0.5 0-5.6 0.5-6.2 10.3 -0.5 10.5 3.9 16.1 6.6 30.2 2.6 12.9 10 13 10 13s3.9 25 7.4 34.1c3.6 9.2 10.2 19.5 10.2 19.5s2.2 39.9-1.4 44.3c-3.6 4.4-14.3 8.3-21.6 10 -12.9 2.8-32.8 4.7-46.7 9.6 -14 5-57 21.8-57 56.3h173 173C764.9 871.6 721.9 854.9 707.9 849.9zM591.8 889H443.3c2.2-3.3 5.1-5.5 8.9-8.2 7.6-5.5 17.4-10.6 29.3-14.7 7.4-2.6 18.1-4.4 27.4-5.7 6.2-1 12-1.8 17.2-3 3.7-0.8 22.5-5.4 31.1-15.8 4.9-5.9 6.3-13.7 6-34.9 -0.1-10.8-0.7-20.9-0.7-21.3l-0.2-4.5L560 777c-1.6-2.5-6.3-10.3-8.6-16.6 -1.9-5.1-5-20.7-6.5-30.4 0 0 0.4 1.1-0.5-4 -1-5.1-9.1-4.7-10.2-8.6 -1-3.9-1.9-7.4-4.7-19.7 -2.7-12.2 3-12.1 4.2-17.5 0.7-3.3 0-6.2 0-6.3l0 0c-0.3-1.1-4.4-14.5-5.1-40.8 -0.3-14.3 5-27.7 14.9-37.7 11.5-11.7 28.1-17.8 48.1-17.8 20.6 0 36.8 6.2 48.2 17.8 10 10 15.2 23.5 14.9 37.7 -0.5 26.2-4.7 39.6-5.1 40.8l0 0c0 0.1-0.7 1.8-0.4 5.6 0.2 5.9 7.4 5.9 4.7 18.2 -2.7 12.2-3.7 15.8-4.7 19.7 -1 3.9-9.2 3.6-10.2 8.6 -1 5.1-0.5 4-0.5 4 -1.5 9.6-4.5 25.3-6.5 30.4 -2.5 6.3-7.1 14.1-8.6 16.6l-2.5 3.8 -0.2 4.5c0 0.4-0.5 10.5-0.7 21.3 -0.2 21.2 1.2 29.1 6 34.9 8.6 10.3 27.4 14.9 31.1 15.8 5.2 1.2 11 2.1 17.2 3 9.4 1.4 20.1 3.1 27.4 5.7 11.9 4.2 21.8 9.3 29.3 14.8 3.8 2.7 6.7 5 8.9 8.2L591.8 889 591.8 889z"></path><path id="student" fill="#3A3A3A" d="M1253.6 849.9c-14-5-34-6.7-46.7-9.5 -7.4-1.6-18.1-5.7-21.6-10 -3.6-4.4-1.4-44.3-1.4-44.3s6.6-10.4 10.2-19.5c3.6-9.1 7.4-34 7.4-34s7.4 0 10-12.9c2.8-14.1 7.1-19.9 6.6-30.4 -0.5-9.7-5.6-10.3-6.2-10.3l0 0c0 0 5.3-14.7 6-45.9 0.8-36.9-27.4-73.2-80.4-73.2 -53 0-81.1 36.2-80.4 73.1 0.7 31 6 45.9 6 45.9l0 0c-0.5 0-5.6 0.5-6.2 10.3 -0.5 10.5 3.9 16.1 6.6 30.2 2.6 12.9 10 13 10 13s3.9 25 7.4 34.1c3.6 9.2 10.2 19.5 10.2 19.5s2.2 39.9-1.4 44.3c-3.6 4.4-14.3 8.3-21.6 10 -12.9 2.8-32.8 4.7-46.7 9.6 -14 5-57 21.8-57 56.3h173 173C1310.6 871.6 1267.6 854.9 1253.6 849.9zM1137.5 889H989c2.2-3.3 5.1-5.5 8.9-8.2 7.6-5.5 17.4-10.6 29.3-14.7 7.4-2.6 18.1-4.4 27.4-5.7 6.2-1 12-1.8 17.2-3 3.7-0.8 22.5-5.4 31.1-15.8 4.9-5.9 6.3-13.7 6-34.9 -0.1-10.8-0.7-20.9-0.7-21.3l-0.2-4.5 -2.5-3.8c-1.6-2.5-6.3-10.3-8.6-16.6 -1.9-5.1-5-20.7-6.5-30.4 0 0 0.4 1.1-0.5-4 -1-5.1-9.1-4.7-10.2-8.6 -1-3.9-1.9-7.4-4.7-19.7 -2.7-12.2 3-12.1 4.2-17.5 0.7-3.3 0-6.2 0-6.3l0 0c-0.3-1.1-4.4-14.5-5.1-40.8 -0.3-14.3 5-27.7 14.9-37.7 11.5-11.7 28.1-17.8 48.1-17.8 20.6 0 36.8 6.2 48.2 17.8 10 10 15.2 23.5 14.9 37.7 -0.5 26.2-4.7 39.6-5.1 40.8l0 0c0 0.1-0.7 1.8-0.4 5.6 0.2 5.9 7.4 5.9 4.7 18.2 -2.7 12.2-3.7 15.8-4.7 19.7 -1 3.9-9.2 3.6-10.2 8.6s-0.5 4-0.5 4c-1.5 9.6-4.5 25.3-6.5 30.4 -2.5 6.3-7.1 14.1-8.6 16.6l-2.5 3.8 -0.2 4.5c0 0.4-0.5 10.5-0.7 21.3 -0.2 21.2 1.2 29.1 6 34.9 8.6 10.3 27.4 14.9 31.1 15.8 5.2 1.2 11 2.1 17.2 3 9.4 1.4 20.1 3.1 27.4 5.7 11.9 4.2 21.8 9.3 29.3 14.8 3.8 2.7 6.7 5 8.9 8.2L1137.5 889 1137.5 889z"></path><path id="blue-bubble" fill="#3366CC" d="M860.1 382.5c-39.8 0-77.3 12.5-105.6 35.2 -28.7 23.1-44.6 53.9-44.6 86.8 0 22.2 7.4 43.9 21.3 62.8 3.9 5.3 5.9 12.1 5.5 18.9 -0.6 8.9-3.2 23.3-11.9 41.2 -1.4 2.8-0.9 6.1 1.3 8.4 1.4 1.5 3.4 2.4 5.5 2.4 1 0 1.9-0.2 2.8-0.6l46.2-18.8c4.2-1.7 8.8-2.6 13.3-2.6 3.7 0 7.2 0.6 10.7 1.7 17.7 5.8 36.4 8.7 55.6 8.7 39.8 0 77.3-12.5 105.6-35.2 28.7-23.1 44.6-53.9 44.6-86.8C1010.4 437.2 943 382.5 860.1 382.5zM860.3 611.6c-17.7 0-34.8-2.7-51-7.9 -4.9-1.6-10.1-2.5-15.4-2.5 -6.4 0-13 1.3-18.9 3.7l-29.6 12c4.2-12.4 5.8-22.6 6.3-29.8 0.6-10.4-2.3-20.6-8.4-28.8 -12-16.3-18.4-34.9-18.4-53.9 0-59 60.6-107.1 135.2-107.1 74.6 0 135.3 48.1 135.3 107.1C995.4 563.6 934.8 611.6 860.3 611.6z"></path><g id="green-bubble"><path fill="#FFFFFF" d="M1003.9 624.1l13.1 5.3c-1.5-5.5-2.1-10.1-2.3-13.6 -0.4-7.2 1.6-14.3 5.8-19.9 7.2-9.7 11-20.8 11-32.1 0-35.4-36.7-64.2-81.8-64.2 -45.2 0-81.9 28.8-81.9 64.3 0 35.4 36.7 64.2 81.8 64.2 10.8 0 21.2-1.6 31.1-4.8 3.3-1.1 6.8-1.7 10.5-1.7C995.5 621.6 999.8 622.4 1003.9 624.1z"></path><path fill="#66CC66" d="M1029.6 614.9c-0.2-3.6 0.8-7.2 2.9-10 9.1-12.3 13.9-26.5 13.9-41 0-43.7-43.4-79.2-96.8-79.2 -53.4 0-96.9 35.6-96.9 79.3 0 43.7 43.4 79.2 96.8 79.2 12.3 0 24.4-1.9 35.8-5.6 4.1-1.4 8.9-1.2 13 0.5l28.9 11.8c0.9 0.4 1.9 0.6 2.8 0.6 0 0 0.1 0 0.1 0 4.1 0 7.4-3.4 7.4-7.5 0-1.4-0.4-2.6-1-3.7C1031.5 628.5 1030 620.1 1029.6 614.9zM949.5 628.1c-45.1 0-81.8-28.8-81.8-64.2 0-35.4 36.7-64.3 81.9-64.3 45.1 0 81.8 28.8 81.8 64.2 0 11.3-3.8 22.4-11 32.1 -4.2 5.6-6.2 12.7-5.8 19.9 0.2 3.5 0.9 8.1 2.3 13.6l-13.1-5.3c-4.1-1.7-8.4-2.5-12.9-2.5 -3.6 0-7.1 0.6-10.5 1.7C970.7 626.5 960.3 628.1 949.5 628.1z"></path></g><g id="wand"><g id="wand_1_"><rect id="purple-fill" x="391.5" y="841" transform="matrix(0.7071 0.7071 -0.7071 0.7071 740.1014 -94.3729)" fill="#8896D3" width="185" height="10.5"></rect><path fill="#11162D" d="M567.7 907.9L427.5 767.6l-26-26 -22.1 22.1 27.1 27.1L545.7 930 567.7 907.9zM422.3 777.1l130.8 130.8 -7.4 7.4L414.9 784.5 422.3 777.1z"></path></g><g id="wand-pinkfill"><rect x="396.3" y="686" fill="#FF3366" width="10.4" height="26"></rect><rect x="396.3" y="818.5" fill="#FF3366" width="10.4" height="26"></rect><rect x="458.6" y="758.7" fill="#FF3366" width="26" height="10.4"></rect><rect x="318.4" y="758.7" fill="#FF3366" width="26" height="10.4"></rect></g><g id="wand-orange-fill"><rect x="341.7" y="713.3" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 97.3968 1477.4063)" fill="#F7CF6D" width="26" height="10.4"></rect><rect x="349.5" y="799.2" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 31.1832 1637.2693)" fill="#F7CF6D" width="10.4" height="26"></rect><rect x="443.1" y="705.6" transform="matrix(0.7071 0.7071 -0.7071 0.7071 639.3849 -106.5594)" fill="#F7CF6D" width="10.4" height="26"></rect></g></g><g id="briefcase"><path fill="none" d="M1393.6 734.6c0-6.2-4-10.7-10.2-10.7h-57.6c-6.4 0-8.1 4.7-8.1 10.7v11h75.9V734.6z"></path><polygon fill="#FFFFFF" points="1279.7 771.3 1260.7 771.3 1260.7 761.8 1241.7 761.8 1241.7 790.3 1469.5 790.3 1469.5 761.8 1450.5 761.8 1450.5 771.3 1431.5 771.3 1431.5 761.8 1279.7 761.8 "></polygon><rect x="1241.7" y="799.8" fill="#FFFFFF" width="227.8" height="116.4"></rect><path fill="#685942" d="M1232.2 752.3v173.4H1479V752.3h-28.5v-6.8 -2.7h-19v2.7 6.8h-28.5v-6.8 -11 -1.2c-0.3-10.8-8.1-19-19.1-19h-58.8c-11 0-17 8.1-17 19v1.2 11 6.8h-28.5v-6.8 -2.7h-19v2.7 6.8H1232.2zM1469.5 916.2h-227.8V799.8h227.8V916.2zM1317.7 734.6c0-6 1.7-10.7 8.1-10.7h57.6c6.2 0 10.2 4.6 10.2 10.7v11 6.5 0.3h-75.9V752v-6.5V734.6zM1431.5 761.8v9.5h19v-9.5h19v28.5h-227.8v-28.5h19v9.5h19v-9.5H1431.5z"></path></g></svg>
@@ -142,127 +110,4 @@
             <p>Une fois l'étude finalisée, votre projet ainsi qu’un rapport d’étude 
             vous seront remis, avec une <em>garantie</em>.</p>
         </section>
-        <div class="scrollpoint" id="contact"></div>
-        <section class="home-section contact inverse">
-            <h1>Discutons de votre projet !</h1>
-            <form enctype="multipart/form-data" method="post">
-                <div class="flexwrap">
-                    <input type="text" class="honey" name="mail">
-                    <div class="input-bg">
-                        {{form.nom()}}
-                    </div>
-                    <div class="input-bg">
-                        {{form.prenom()}}
-                    </div>
-                    <div class="input-bg">
-                        {{form.email()}}
-                    </div>
-                    <div class="input-bg">
-                        {{form.tel()}}
-                    </div>
-                    <div class="input-bg textarea">
-                        {{form.description()}}
-                    </div>
-
-                        {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                                {% for message in messages %}
-                                    {{ message }}
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-                    <div class="input-bg file btn">
-                        <div class="label">
-                            <form method="post" enctype="multipart/form-data">
-                                {{form.file.label}}
-                                {{form.file()}}
-                                <input type="file" name ="file">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="input-bg submit btn">
-                        {{form.submit()}}
-                    </div>
-                </div>
-            </form>
-            <div class="or">
-                <div class="separator"></div>
-                <div class="text">OU</div>
-                <div class="separator"></div>
-            </div>
-            <h2 class="address">contact@junioresiee.com</h2>
-        </section>
-    </body>
-    <footer class="main home-section">
-        <div class="row">
-            <div class="small-12 large-3 columns address">
-                <h3>Adresse &amp; contact</h3>
-                <p>Junior ESIEE, 2 Boulevard Blaise Pascal BP 99 - 93162 Noisy le Grand CEDEX</p>
-                <p>contact@junioresiee.com<br>01 45 92 66 70</p>
-            </div>
-            <div class="small-12 large-3 columns partners">
-                <h3>Nos partenaires</h3>
-                <ul>
-                    <li><a href="http://esiee.fr/">ESIEE Paris</a></li>
-                    <li><a href="http://www.alten.fr/">Alten</a></li>
-                    <li><a href="https://www.societegenerale.fr/">Société générale</a></li>
-                    <li><a href="http://www.junior-entreprises.com/">CNJE</a></li>
-                    <li><a href="https://juniors-idf.fr/">JIDF</a></li>
-                    <li><a href="http://www.jubs.fr/">Junior BioSciences</a></li>
-                    <li><a href="http://pep.enpc.org/">Ponts Études Projets</a></li>
-                </ul>
-            </div>
-            <div class="small-12 large-3 columns social">
-                <h3>Réseaux sociaux</h3>
-                <a href="https://www.facebook.com/JuniorEsieeParis"><i class="ion-social-facebook-outline"></i></a>
-                <a href="https://twitter.com/junioresiee"><i class="ion-social-twitter-outline"></i></a>
-                <a href="https://www.linkedin.com/company/junior-esiee"><i class="ion-social-linkedin-outline"></i></a>
-                <p class="link-legal"><a href="#" class="toggle-legal">Mentions légales</a></p>
-            </div>
-        </div>
-    </footer>
-    <section class="popup legal hide">
-        <div class="close toggle-legal"><i class="ion-ios-close-empty"></i></div>
-        <h1>Mentions légales</h1>
-        <p>
-            Junior ESIEE Paris est une association à but non lucratif régie par la loi française du 1er juillet 1901 et du décrêt du 16 août 1901. Son siège social se situe à :
-
-            ESIEE Paris
-            2 BD Blaise Pascal
-            BP99
-            93162 Noisy le Grand CEDEX
-
-            Junior ESIEE Paris est déclarée à la sous-préfecture du Raincy.
-            Numéro de SIRET : 348 301 243 000 13
-            Code APE : 6202B
-            Junior ESIEE Paris est affiliée à la Confédération Nationale des Junior-Entreprises, et détient à ce titre le label "Junior-Entreprise". 
-
-            Les données, textes, contenus, images, de ce site web, sont protégés au titre de la propriété Intellectuelle et des droits d'Auteurs. La récupération est autorisée, sous réserve d'une utilisation strictement personnelle, excluant l'usage à des fins publicitaires, commerciales, ou d'informations, et quelles soient conformes aux dispositions de l'article L.122-5 du Code de la Propriété Intellectuelle. A l'exception des dispositions précédentes, toute utilisation avec ou sans modification, toute représentation, toute reproduction, par quelque procédé que ce soit, et sur quelque support que ce soit, d'un fichier (ou donnée) complet ou partiel(le) du site, est strictement interdite sans avoir obtenu l'autorisation préalable de Junior ESIEE Paris.
-            Art. L.111 et Art. L.112 : Code de la propriété Intellectuelle, Livre 1er, Titre 1er : Objet du Droit d'Auteur : Chapitre 1 : Nature du droit d'auteur - Chapitre 2 : Oeuvres protégées. Nous souhaitons le respect pour nos informations et nos fichiers, et donc le non-vol. Art. L.121 : Droits moraux - Code de la propriété Intellectuelle, Titre 2 : Droits des Auteurs, Chapitre 2.
-
-            En application de la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, chaque internaute dispose des droits d’opposition (article 38 de la loi), d’accès (articles 39, 41 et 42 de la loi) et de rectification (article 40 de la loi) des données le concernant. Ainsi, il peut exiger que soient rectifiées, complétées, clarifiées, mises à jour ou effacées les informations le concernant qui sont inexactes, incomplètes, équivoques, périmées, ou dont la collecte ou l’utilisation, la communication ou la conservation est interdite.
-            Pour exercer ces droits, vous pouvez nous contacter :
-
-            Par email (courriel) en utilisant le formulaire de contact du site web.
-            Par courrier, à l'adresse : Junior ESIEE, 2 bd Blaise Pascal, BP99, 93162 Noisy le Grand CEDEX
-
-            Junior-Entreprise et JE sont des marques déposées par la Confédération Nationale des Junior-Entreprises. ESIEE Paris, ESIEE Management et ESIEE Engineering sont des marques déposées par la Chambre de Commerce et d'Industrie de Paris. Les appellations, marques et logos présents sur ce site web sont la propriété de leurs ayants droit respectifs. 
-
-            Made with <i class="ion-heart"></i> by Maxence Aïci &amp; Vincent Salahkar      
-        </p>
-    </section>
-    <script src="static/js/jquery.cookie.js"></script>
-    <script src="static/js/modernizr.js"></script>
-    <script src="static/js/fastclick.js"></script>
-    <script src="static/js/jquery.js"></script>
-    <script src="static/js/TweenMax.js"></script>
-    <script src="static/js/ScrollMagic.js"></script>
-    <script src="static/js/animation.js"></script>
-    <script src="static/js/ScrollToPlugin.js"></script>
-    <script src="static/js/debug.js"></script>
-    <script src="static/js/foundation_002.js"></script>
-    <script src="static/js/foundation.js"></script>
-    <script src="static/js/foundation_003.js"></script>
-    <script src="static/js/app.js"></script>
-    
-</html>
+    {% endblock %}
