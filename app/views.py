@@ -1,7 +1,8 @@
 from flask import render_template,request,redirect,url_for,render_template_string, session, flash,make_response
 from . import app,login_manager,verifier
 from .models import FormProcess,User,LoginForm,SignupForm
-from werkzeug import secure_filename, MultiDict
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import MultiDict
 import phonenumbers
 import os
 from flask_mail import Message

@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm, RecaptchaField, Form
+from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, SubmitField,TextField, PasswordField, BooleanField
 from flask_wtf.file import FileField
 from wtforms.validators import DataRequired,Email, ValidationError, Length
@@ -10,7 +10,7 @@ from flask_login import UserMixin
 
 
 
-class FormProcess(Form):
+class FormProcess(FlaskForm):
     mini = 2
     maxi = 32
     nom         =   StringField("Nom de famille", 
