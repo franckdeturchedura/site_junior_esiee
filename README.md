@@ -2,7 +2,7 @@
 
 
 
-##Installation
+## Installation
 
 Pour installer toutes les dépendances nécessaires de python.
 
